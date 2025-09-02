@@ -1,0 +1,13 @@
+.box{
+  background-color: rgb(46, 32, 58);
+  color: white;
+  border: 1px solid, white;
+  border-radius: 10px;
+  
+}
+
+.box img{
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+}
