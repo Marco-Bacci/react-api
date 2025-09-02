@@ -20,17 +20,17 @@ function App() {
         {actors.map((actor) => {
           const {id, name, image, birth_year, nationality, biography, most_famous_movies, awards } = actor
           return (
-            <div className="col-4 gy-4">
-              <div className="box text-center h-100" key = {id}>
-                <h4>{name}</h4>
+            <div className="col-lg-4 col-md-6 col-sm-12 gy-4" key = {id}>
+              <div className="box text-center h-100 p-2" >
+                <h3 className="text-uppercase">{name}</h3>
                 <img src={image} alt="" />
                 <p>
                   <span>{birth_year}</span>{" "}
                   <span>{nationality}</span>
                 </p>
                 <p>{biography}</p>
-                <p>{most_famous_movies}</p>
-                <p>{awards}</p>
+                <p className="text-danger">Known for: <br></br> {most_famous_movies}</p>
+                <p className="text-warning">{awards}</p>
               </div>
             </div>
           );
