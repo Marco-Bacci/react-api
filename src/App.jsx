@@ -1,4 +1,14 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 function App() {
+  const [actors, setActors] = useState([]);
+  const fetchActors = () => {
+    axios.get("https://lanciweb.github.io/demo/api/actresses/").then((resp) => {
+      setActors(resp.data);
+    });
+  };
+  useEffect(fetchActors, []);
   return (
     <div className="container">
       <div className="row">
@@ -6,17 +16,24 @@ function App() {
           <h1>Actors</h1>
           <p>List of actors fetched from an API</p>
         </div>
-        <div className="col-4">
-          <div className="box text-center">
-            <h4>nome cognome</h4>
-            <img src="https://cdn.bestmovie.it/wp-content/uploads/2021/06/GettyImages-512916978-scaled.jpg" alt="margot"/>
-            <p><span>anno</span> e <span>nazionalità</span></p>
-            <p>DESCRIZIONE</p>
-            <p>MOVIES</p>
-            <p>OSCAR</p>
-          </div>
-        </div>
-        
+
+        {actors.map((actor) => {
+          return (
+            <div className="col-4">
+              <div className="box text-center">
+                <h4>{actor.name}</h4>
+                <img src={actor.image} alt="" />
+                <p>
+                  <span>{actor.birth_year}</span>{" "}
+                  <span>{actor.nationality}</span>
+                </p>
+                <p>{actor.biography}</p>
+                <p>{actor.most_famous_movies}</p>
+                <p>{actor.awards}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
