@@ -10,11 +10,15 @@ function App() {
     });
   };
   useEffect(fetchActors, []);
+  // bonus-----------------------------------------------------
+  useEffect(() => {
+    console.log("stai scrivendo nell'input");
+  }, [search]);
 
   const filteredActors = actors.filter((actor) =>
     actor.name.toLowerCase().includes(search.toLowerCase())
   );
-
+// ------------------------------------------------------------
   return (
     <div className="container">
       <div className="row">
